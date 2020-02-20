@@ -17,7 +17,12 @@ angular
         });
     }
     getcontacts();
-
+    $scope.updateView = function() {
+      scope.contacts = scope.contacts 
+    }
+    $scope.getAll = function() {
+      getcontacts();
+    }
     $scope.addcontact = function() {
       contact
         .create($scope.newcontact)
@@ -50,11 +55,11 @@ angular
   
     $scope.searchcontact = function(item) {
       contact
-        .findOne({Name : item.Name
-        })
+        .findOne({item})
         .$promise
         .then(function(results) {
           $scope.contacts = results;
+          alert(results.toString())
         });
     };
     
